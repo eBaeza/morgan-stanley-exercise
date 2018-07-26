@@ -47,7 +47,20 @@ export class AccountService {
 
   constructor() { }
 
-  getAccounts(): Observable<Account[]> {
-    return of(accounts);
+  getAccounts({ orderBy = null, orderType = 'ASC' } = {}): Observable<Account[]> {
+    const data = accounts.sort((a, b) => {
+      const A = orderType === 'DESC' ? b : a;
+      const B = orderType === 'DESC' ? a : b;
+
+      if (A.number > B.number) {
+        return 1;
+      }
+      if (A.number < B.number) {
+        return -1;
+      }
+      return 0;
+    });
+
+    return of(data);
   }
 }
