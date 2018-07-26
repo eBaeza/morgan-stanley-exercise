@@ -1,0 +1,68 @@
+@import "styles/config";
+
+table {
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse;
+
+  thead {
+    background-color: $gray-lightest;
+    border-bottom: 1px solid $gray;
+    font-size: 0.8rem;
+
+    th {
+      font-weight: normal;
+      padding: 5px 10px;
+
+      &:hover {
+        background-color: $gray-light;
+      }
+
+      &:first-child {
+        text-align: left;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+
+      .subtitle {
+        display: block;
+        color: $gray;
+      }
+    }
+  }
+
+  tbody {
+    td {
+      padding: 1em 0.5em;
+      border-bottom: 1px solid $gray-light;
+
+      &:first-child {
+        text-align: left;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+
+      .account-number {
+        color: $blue-dark;
+        font-weight: 600;
+      }
+
+      .change {
+        color: $gray;
+        font-size: 12px;
+
+        &.up {
+          color: $green;
+        }
+
+        &.down {
+          color: $red;
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,12 @@ import { Account } from './models/account.model';
 })
 export class AppComponent implements OnInit {
   accounts: Account[] = [];
+  columns = [{
+    header: 'Account',
+  }, {
+    header: 'Available Cash',
+    subtitle: 'Today\'s Change'
+  }];
 
   constructor(private accountService: AccountService) {}
 

@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let column of columns">
+        {{column.header}}
+        <span *ngIf="column.subtitle" class="subtitle">{{column.subtitle}}</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td><span class="account-number">{{ row.number }}</span></td>
+      <td>
+        {{ row?.amount | currency }}
+        <div class="change"
+        [ngClass]="{
+          'up': row.percentChange > 0,
+          'down': row.percentChange < 0
+        }">{{ row.percentChange | number:'1.2' }}% / {{ row.amountChange | currency }}</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
