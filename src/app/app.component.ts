@@ -11,15 +11,20 @@ export class AppComponent implements OnInit {
   accounts: Account[] = [];
   columns = [{
     header: 'Account',
+    property: 'number',
   }, {
     header: 'Available Cash',
-    subtitle: 'Today\'s Change'
+    subtitle: 'Today\'s Change',
+    property: 'amount',
   }];
 
   constructor(private accountService: AccountService) {}
 
   ngOnInit() {
-    this.accountService.getAccounts().subscribe(
+  }
+
+  getAccounts(order) {
+    this.accountService.getAccounts(order).subscribe(
       res => {
         this.accounts = res;
       }

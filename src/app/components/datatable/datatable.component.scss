@@ -13,6 +13,7 @@ table {
     th {
       font-weight: normal;
       padding: 5px 10px;
+      cursor: pointer;
 
       &:hover {
         background-color: $gray-light;
@@ -24,6 +25,10 @@ table {
 
       &:last-child {
         text-align: right;
+      }
+
+      .sort-icon {
+        color: $blue;
       }
 
       .subtitle {

@@ -1,9 +1,15 @@
 <table>
   <thead>
     <tr>
-      <th *ngFor="let column of columns">
+      <th *ngFor="let column of columns" (click)="toggleOrderColumn(column.property)">
+        <span *ngIf="selectedColumn === column.property" class="sort-icon">
+          <fa-icon *ngIf="sort === 'asc'" icon="angle-up"></fa-icon>
+          <fa-icon *ngIf="sort === 'desc'" icon="angle-down"></fa-icon>
+        </span>
         {{column.header}}
-        <span *ngIf="column.subtitle" class="subtitle">{{column.subtitle}}</span>
+        <span *ngIf="column.subtitle" class="subtitle">
+          {{column.subtitle}}
+        </span>
       </th>
     </tr>
   </thead>

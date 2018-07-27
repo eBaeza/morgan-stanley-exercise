@@ -1,5 +1,5 @@
 <div class="container">
-  <app-datatable [data]="accounts" [columns]="columns">
+  <app-datatable [data]="accounts" [columns]="columns" (fetchData)="getAccounts($event)">
   </app-datatable>
 </div>
 
