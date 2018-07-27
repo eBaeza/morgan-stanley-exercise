@@ -71,3 +71,18 @@ table {
     }
   }
 }
+
+button {
+  width: 100%;
+  border: 0;
+  padding: 1em;
+  color: $blue-dark;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all ease-in 0.15s;
+
+  &:hover {
+    background-color: $gray-light;
+  }
+}

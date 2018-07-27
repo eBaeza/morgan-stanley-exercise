@@ -10,9 +10,12 @@ export class DatatableComponent implements OnInit {
   @Input() data;
   @Input() columns = [];
   @Output() fetchData = new EventEmitter<any>(true);
+  @Output() loadMore = new EventEmitter<any>(true);
 
   public selectedColumn = null;
   public sort = null;
+  public page = 1;
+  public pageSize = 3;
 
   constructor() { }
 
@@ -20,6 +23,8 @@ export class DatatableComponent implements OnInit {
     this.fetchData.emit({
       orderBy: this.selectedColumn,
       orderType: this.sort,
+      page: this.page,
+      pageSize: this.pageSize
     });
   }
 
@@ -29,6 +34,19 @@ export class DatatableComponent implements OnInit {
     this.fetchData.emit({
       orderBy: this.selectedColumn,
       orderType: this.sort,
+      page: this.page,
+      pageSize: this.pageSize
     });
+  }
+
+  handleLoadMore() {
+    this.loadMore.emit({
+      orderBy: this.selectedColumn,
+      orderType: this.sort,
+      page: (this.pageSize / 3) + 1,
+      pageSize: 3,
+    });
+
+    this.pageSize += 3;
   }
 }

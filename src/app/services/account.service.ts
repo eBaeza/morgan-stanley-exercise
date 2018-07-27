@@ -10,9 +10,9 @@ export class AccountService {
 
   constructor() { }
 
-  getAccounts({ orderBy = null, orderType = 'asc' } = {}): Observable<Account[]> {
+  getAccounts({ orderBy = null, orderType = 'asc', page = 1, pageSize = 3 } = {}): Observable<Account[]> {
     const data: Account[] = this.orderBy(accounts, orderBy, orderType);
-    return of(data);
+    return of(this.paginate(data, page, pageSize));
   }
 
   private orderBy(data: Array<any>, property: string, type: string = 'asc'): Array<any> {
@@ -35,5 +35,9 @@ export class AccountService {
 
       return 0;
     });
+  }
+
+  private paginate (array, page, pageSize) {
+    return array.slice((page - 1) * pageSize, page * pageSize);
   }
 }

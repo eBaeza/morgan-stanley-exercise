@@ -20,13 +20,15 @@ export class AppComponent implements OnInit {
 
   constructor(private accountService: AccountService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  getAccounts(order) {
-    this.accountService.getAccounts(order).subscribe(
-      res => {
-        this.accounts = res;
+  getAccounts(filters, isToLoadMore = false) {
+    this.accountService.getAccounts(filters).subscribe(
+      data => {
+        this.accounts = !isToLoadMore ? data : [
+          ...this.accounts,
+          ...data
+        ];
       }
     );
   }
